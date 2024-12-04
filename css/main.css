@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+
+/* 변수 */
+:root {
+  --main-color:#e70017;
+  --fs:2rem;
+  --main-font:"pretendard",sans-serif;
+  --black: #000;
+  --white: #fff;
+} 
+
+body {overflow-x: hidden; color: #000; font-size: 1.6rem; line-height: 1.5; font-family: "pretendard",sans-serif;}
+.inner { max-width: 1640px; padding: 0 20px;/* 궈터값 */ margin: 0 auto;}/* 이걸처리해줘 1600하면 공간이 거의 꽉차니까 패딩을 처리 하고 패딩값을 더해줘 */
+
+
+/* header */
+
+#header {padding-top: 20px;/* 살짝 내려오게 */ position: absolute;/* body 기준이라 렐러 다시 안줘도 되 */ left: 0; top: 0; width: 100%;/* 크기설정 */ z-index: 2;/* 이미지에 가리니까 2이상의 값을 줘야한다 */  }
+#header .inner { display: flex; justify-content: space-between; align-items: center;}
+#header h1 img { width: 200px;/* 이미지의 고정크기를 한쪽만 줘도 된다 비율에 맞춰서 글애 */ }
+
+#header .gnb {display: flex;} /* 는 pc버전이라 반응형에 맞출 필요는 없다. */
+#header .gnb > li { position: relative;}
+#header .gnb > li > a {display: block; font-size: var(--fs); color: #fff; padding:10px 40px ;/* 메뉴사이간격 */}
+
+
+#header .gnb > li .depth2 {display: none; left: calc(50% - 100px); position: absolute; width: 200px;/* 크기가 사라지니까 크기를 줘 */ padding: 30px;/* 전체적으로 */ border-radius: 20px; background: #fff;}
+#header .gnb > li .depth2 li a { transition: all 0.5s;  display: block; padding: 5px 0;}
+#header .gnb > li .depth2 li a:hover { color:var(--main-color);}
+
+#header .ham {display: none;/* 기본값이 none이야 */ width: 30px; height: 30px ; font-size: 0; background:url(../images/ham.svg) no-repeat; cursor: pointer;/* 커서가 나오게 */}
+
+@media (max-width:1024px) {
+  #header .ham {display: block;}
+  #header .gnb {display: none;}
+}
+
+@media (max-width:383px) {
+  #header h1 img { width: 70px; }
+}
+
+
+
+/* banner */
+.banner .swiper-slide {position: relative;/* 슬라이드 자체에 레러티브를 선언해줘야한다 글씨 */}
+.banner .banner1 {height: 100vh;/* 디바이스화면에 100% 차도록 하겠다. 줄여도 보이는 화면에 꽉차게 */ background: url(../images/banner1.png) no-repeat center center / cover /* 화면을 줄여도 맞춰서 줄어들게 하는 사이즈 cover 사이즈 */;}
+.banner .banner2 {height: 100vh;background: url(../images/banner2.jpg) no-repeat center center / cover ;}
+.banner .banner3 {height: 100vh;background: url(../images/banner3.png) no-repeat center center / cover ;}
+
+
+.banner .banner_txt { position: absolute; left: 7.8125vw; bottom: 10.41666vw; color: #fff; /* 글자색을 한번에 */}
+.banner .banner_txt h2 {padding-bottom: 0 0 20px; line-height: 1.2;/* 행간값을 보고 조절 */ font-size: 7rem/* 70px */; }
+.banner .banner_txt span { font-size: 3rem/* 30px */;  }
+
+
+.banner .swiper-button-next {color: #fff;}/* 화살표를 글자처럼 처리해서 글바색 바꾸듯이 바꾸면되 */
+.banner .swiper-button-prev {color: #fff;}
+.banner .swiper-pagination {left: 50%; transform: translateX(-50%);/* 정중앙배치 50% 에서 -50% 해줌 */  width: 90%;/* 화면을 유동적으로 줄이기 위해 유동적크기로 설정 */ height: 2px; top:auto; bottom: 5.20833px;/* top값이 자동으로 잡혀있어서 bottom을 주면 충돌이 일어나 그래서 top을 auto 로 */}
+.banner .swiper-pagination-progressbar-fill {background: #fff;}
+
+@media (max-width:1200px) {/* 테블릿 */
+  .banner .banner_txt h2 {font-size: 5.5rem;/* 1.5정도 뻼 30% */ }
+  .banner .banner_txt span { font-size: 2.5rem;/*0.5뻄  */ }
+  
+}
+
+
+@media (max-width:700px) {/* 모바일 */
+  .banner .banner1 {height: 100vh; background: url(../images/banner1_mo.png) no-repeat center center / cover ;}
+ .banner .banner2 {height: 100vh;background: url(../images/banner2_mo.png) no-repeat center center / cover ;}
+ .banner .banner3 {height: 100vh;background: url(../images/banner3_mo.png) no-repeat center center / cover ;}
+  .banner .banner_txt h2 {font-size: var(--fs*2);/* 1.5정도 뻼 30% */ /* 4 */ }
+  .banner .banner_txt span { font-size: 2rem;/*0.5뻄  */ }
+  .banner .swiper-button-next {display: none;}
+  .banner .swiper-button-prev {display: none;}
+  
+}
+
+/* section꺼니까 따로 적음 */
+
+
+
+h2 {font-size: 7rem; font-family: "Mont",sans-serif; text-transform: capitalize; }
+.btn_more a {transition: all 0.5s; display: inline-block; background: #000; color: #fff; padding: 10px 100px; border-radius: 50px; font-size: 2rem;}
+.btn_more a:hover { background: var(--main-color);}
+
+@media (max-width:1200px){
+  h2 {font-size: 5.5rem;}
+}
+
+@media (max-width:576px){
+  h2 {font-size: calc(var(--fs)*2);}/* 변수명 4em 을 쓸때 이렇게 적용한다 */
+  .btn_more a {padding: 10px 50px; font-size: 1.6rem;}
+}
+
+
+
+/* menu */
+
+.menu { margin: 200px 0; text-align: center; }
+.menu .swiper { margin-top: 50px;}
+.menu .swiper-slide {transition: transform/*all이 아닌 속성명을 넣어주면 저거만 들어간다. */ 0.5s;/* active의 기본이니까 */ transform: scale(0.8);}
+.menu .swiper-slide-active { transform: scale(1);} /* 주변을 작게 만든 다음 active 움직이면 원본크기 */
+.menu .swiper-slide img {width: 100%;}
+.menu .swiper-slide strong {padding: 10px 0; display: block; font-size: 2.5rem;}
+.menu .swiper-slide span {display: block; color:var(--main-color); font-weight: 700;}
+
+
+@media(max-width:1200px) {
+  .menu .swiper-slide strong {font-size: 2rem;}
+}
+
+
+
+/* story */
+.story .inner { display: flex; flex-wrap: wrap-reverse; /* wrap의 순서를 바꾸는 것 */ align-items: center; gap: 5.208vw; }
+.story .story_video { width: 65%;}
+.story .story_video video {border-radius: 20px;  width: 100%;} /* 비디오도 이미지와 같이 width 100을 준다. */
+.story .story_txt {width: calc(35% - 5.208vw) ;}/* gap 크기도 제외해줘야해  */
+.story .story_txt p { margin: 20px 0; font-size: 2rem; color: #999;}
+
+@media (max-width:1400px) {
+  .story .story_video { width: 100%;}
+  .story .story_txt {width:100%; text-align: center;}
+  
+}
+
+
+/* event */
+.event {margin: 200px 0; }
+.event .inner {position: relative; display: flex; flex-wrap: wrap;/* 다만들고 반응형 직전에 넣어준다. */ }
+.event .event_txt { height: 200px; position: sticky; top: 50px; width: 400px;} 
+/* sticky도 위치를 잡아야해 height: 200px; position: sticky; top: 조절 ;  */
+.event .event_txt p { font-size: 2rem; color: #999;}
+.event .event_list {display: flex; gap: 30px; width: calc(100% - 400px);}
+.event .event_list > div { width: calc((100% - 60px)/3); } 
+.event .event_list img {width: 100%;}
+.event .event_list .event_item { border: 1px solid #ddd; border-radius: 20px; overflow: hidden;/* radius 안보이는 부분 처리 */ margin-bottom: 30px; }
+.event .event_list .event_item dl { padding: 30px; color: #999; }
+.event .event_list .event_item dl dt { font-size:2rem; font-weight:700; color: #000; padding: 0 0 10px;}
+
+.event .btn_more { text-align: center;}
+
+@media (max-width : 1400px) {
+  .event .event_txt {text-align: center; position: static;/* 기본값으로 */ width: 100%; }
+  .event .event_txt br { display: none; /* br 도 block 이라서 이거 하면 줄바꿈 없앨수 있다 */ }
+  .event .event_list { width: 100%; }
+}
+
+@media (max-width : 1000px){
+  .event .event_txt { height: auto; padding-bottom:20px; }/* 이벤트 글자의 높이를 자동으로 조절하라고 그다음 패딩바텀을 줘서 약간 의 공간을 줌  */
+  .event .event_list > div { width: calc((100% - 30px)/2); } /* 하나가 빠지니까 하나는 빼줘 */
+  .event .event_list > div:nth-child(3) {display: none; }
+}
+
+@media (max-width : 576px){
+  .event .event_list > div { width: 100%; } /* 하나만 나타나니까 */
+  .event .event_list > div:nth-child(2) {display: none; } /* 나머지도 안보이게 처리 */
+}
+
+
+
+/* search */
+.search {background: url(../images/search_bg.png) no-repeat center center / cover;/* cover 을 이제 같이 넣어준다 생각 */ padding: 200px 0; text-align: center; color: #fff;}
+.search .search_box {padding: 5px;/* 서치동그라미와의 간격 */ display: flex; margin: 0 auto; max-width: 800px;/* 이걸 해줘야해아니면 1600길이야 */ background: #fff; border-radius: 100px; overflow: hidden/* 내부영역이 밖으로 나와소 이거 해줘야 둥근모양이 되 */; }
+.search input[type="text"] {font-size: 2rm; font-family: var(--main-font);/* 글자크기와 글자체가 상속이 되지 않아서 따로 지정을 해줘야 한다.input의특수함 */  padding-left: 30px;/* 글자 시작지점을 바꿔줌 */ width: calc(100% - 60px); height: 60px;/* 내부 박스 높이 지정 */ }
+.search input[type="submit"] {font-size: 0; cursor: pointer; background: #000 url(../images/btn_search.png) no-repeat center center; border-radius: 50%; width: 60px; height: 60px; }
+
+
+
+@media(max-width:1000px) {
+  .search { padding: 100px 0;}
+}
+
+
+/* footer */
+#footer { background: #000; padding: 100px 0; color: #fff;}
+#footer .inner { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;}
+#footer .footer_link { display: flex; gap: 10px 20px; flex-wrap: wrap;}
+#footer address { margin: 20px 0; opacity: 0.5;}
+#footer .footer_sns {display: flex; gap: 20px; flex-wrap: wrap;}
+
+
+@media(max-with:768px) {
+  #footer { font-size: 1.4rem; padding: 50px 0;}
+}
+
+
